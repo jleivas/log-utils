@@ -18,8 +18,6 @@
     },
     "homepage": "https://github.com/softdirex/log-utils#readme",
     "dependencies": {
-        "@google-cloud/logging-bunyan": "^3.0.1",
-        "bunyan": "^1.8.14",
         "date-and-time": "^0.14.1"
     }
 }

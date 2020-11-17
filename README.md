@@ -1,11 +1,11 @@
-# logUtils
+# Utilities for logs
 A Node package for print logs in console and in GCP
 
 ## Installation
 
 
 ```
-npm install log-utils
+npm install ut-logs
 ```
 
 ## Log a Json Content
@@ -14,7 +14,7 @@ This is useful for managing logs and debug process.
 
 
 ```
-const logUtils = require('log-utils');
+const utLogs = require('ut-logs');
 
 var json = {
     "clients": [{
@@ -26,7 +26,7 @@ var json = {
     }]
 }
 
-logUtils.logJson(json)
+utLogs.logJson(json)
 ```
 
 
@@ -39,3 +39,9 @@ logUtils.logJson(json)
 > Given this version there are the following changes :
 >
 > 1. MAJOR First implementation with logJson method
+
+1.0.0
+
+> Given this version there are the following changes :
+>
+> 1. MINOR Refix of methods

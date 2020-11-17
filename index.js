@@ -4,18 +4,18 @@ const gcpLogs = require('./src/gcpLogs')
 exports.json = (json) => {
     return logJson.logJson(json)
 }
-exports.gcpInfoDate = (projectName, content) => {
-    return gcpLogs.gcpInfoLogsDate(projectName, content)
+exports.gcpInfoDate = (logger, projectName, content) => {
+    return gcpLogs.gcpInfoLogsDate(logger, projectName, content)
 }
 
-exports.gcpErrorDate = (projectName, content) => {
-    return gcpLogs.gcpErrorLogsDate(projectName, content, true, true)
+exports.gcpErrorDate = (logger, projectName, content) => {
+    return gcpLogs.gcpErrorLogsDate(logger, projectName, content, true, true)
 }
 
-exports.gcpInfo = (projectName, content) => {
-    return gcpLogs.gcpInfoLogs(projectName, content, false, false)
+exports.gcpInfo = (logger, projectName, content) => {
+    return gcpLogs.gcpInfoLogs(logger, projectName, content, false, false)
 }
 
-exports.gcpError = (projectName, content) => {
-    return gcpLogs.gcpErrorLogs(projectName, content, false, false)
+exports.gcpError = (logger, projectName, content) => {
+    return gcpLogs.gcpErrorLogs(logger, projectName, content, false, false)
 }

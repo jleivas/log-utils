@@ -1,16 +1,6 @@
 const date = require('date-and-time');
-const bunyan = require('bunyan')
-const { LoggingBunyan } = require('@google-cloud/logging-bunyan')
-const loggingBunyan = new LoggingBunyan()
-const logger = bunyan.createLogger({
-    name: 'no-PROJECT_NAME',
-    streams: [
-        { stream: process.stdout, level: 'info' },
-        loggingBunyan.stream('info')
-    ],
-})
 
-function fnLogger(projectName, arg, isError, isDate) {
+function fnLogger(logger, projectName, arg, isError, isDate) {
     var now = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss')
     var message = arg
     if (isDate) {
@@ -22,15 +12,6 @@ function fnLogger(projectName, arg, isError, isDate) {
     if (!process.env.PROJECT_ID) {
         console.log(message);
     } else {
-        if (projectName) {
-            logger = bunyan.createLogger({
-                name: projectName,
-                streams: [
-                    { stream: process.stdout, level: 'info' },
-                    loggingBunyan.stream('info')
-                ],
-            })
-        }
         if (isError) {
             logger.error(message);
         } else {
@@ -39,18 +20,18 @@ function fnLogger(projectName, arg, isError, isDate) {
     }
 }
 
-exports.gcpInfoLogsDate = (projectName, content) => {
-    fnLogger(projectName, content, false, true)
+exports.gcpInfoLogsDate = (logger, projectName, content) => {
+    fnLogger(logger, projectName, content, false, true)
 }
 
-exports.gcpErrorLogsDate = (projectName, content) => {
-    fnLogger(projectName, content, true, true)
+exports.gcpErrorLogsDate = (logger, projectName, content) => {
+    fnLogger(logger, projectName, content, true, true)
 }
 
-exports.gcpInfoLogs = (projectName, content) => {
-    fnLogger(projectName, content, false, false)
+exports.gcpInfoLogs = (logger, projectName, content) => {
+    fnLogger(logger, projectName, content, false, false)
 }
 
-exports.gcpErrorLogs = (projectName, content) => {
-    fnLogger(projectName, content, true, false)
+exports.gcpErrorLogs = (logger, projectName, content) => {
+    fnLogger(logger, projectName, content, true, false)
 }

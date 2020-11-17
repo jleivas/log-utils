@@ -5,6 +5,13 @@ A Node package for print logs in console and in GCP
 
 ### Versioning of releases
 
+1.2.0
+
+> Given this version there are the following changes :
+>
+> 1. MAJOR Added *logger* parameter for gcp log methods
+> 3. MINOR Removed bunyan and @google-cloud/logging-bunyan dependencies in this package
+
 1.1.0
 
 > Given this version there are the following changes :
@@ -34,17 +41,35 @@ npm install ut-logs
 
 ## Log a Content with bunyan for GCP
 
+Install additional dependencies in your project:
+
+```
+npm install bunyan
+
+npm install @google-cloud/logging-bunyan
+```
+
 This is useful for managing logs and debug process.
 
 ```
 const utLogs = require('ut-logs');
 
 var projectName = 'ut-logs_test'
+const bunyan = require('bunyan');
+const { LoggingBunyan } = require('@google-cloud/logging-bunyan');
+const loggingBunyan = new LoggingBunyan();
+const logger = bunyan.createLogger({
+    name: projectName,
+    streams: [
+        { stream: process.stdout, level: 'info' },
+        loggingBunyan.stream('info')
+    ],
+});
 
-utLogs.gcpInfo(projectName, 'log message')
-utLogs.gcpError(projectName, 'log message')
-utLogs.gcpInfoDate(projectName, 'log message')
-utLogs.gcpErrorDate(projectName, 'log message')
+utLogs.gcpInfo(logger, projectName, 'log message')
+utLogs.gcpError(logger, projectName, 'log message')
+utLogs.gcpInfoDate(logger, projectName, 'log message')
+utLogs.gcpErrorDate(logger, projectName, 'log message')
 ```
 
 Output:

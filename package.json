@@ -1,6 +1,6 @@
 {
     "name": "ut-logs",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "A Node package for print logs in console and in GCP",
     "main": "index.js",
     "scripts": {

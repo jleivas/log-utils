@@ -5,12 +5,17 @@ A Node package for print logs in console and in GCP
 
 ### Versioning of releases
 
+1.2.1
+
+> Given this version there are the following changes :
+>
+> 1. MINOR Removed bunyan and @google-cloud/logging-bunyan dependencies in this package
+
 1.2.0
 
 > Given this version there are the following changes :
 >
 > 1. MAJOR Added *logger* parameter for gcp log methods
-> 3. MINOR Removed bunyan and @google-cloud/logging-bunyan dependencies in this package
 
 1.1.0
 
